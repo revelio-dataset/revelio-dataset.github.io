@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REVELIO — Multimodal Task Load Estimation for Cross-Domain Generalization</title>
+<meta name="description" content="REVELIO: a cross-domain task-load dataset extending ADABase with commercial video games. 37 participants, 45 sessions. Accepted in the International Journal of Human–Computer Interaction (in press).">
+<link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+<div class="page">
+
+<nav class="nav">
+  <div class="nav-brand">REVELIO</div>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#applications">Applications</a>
+    <a href="#access">Access</a>
+    <a href="#docs">Documentation</a>
+    <a href="https://raw.githubusercontent.com/revelio-dataset/revelio-dataset.github.io/main/LICENSE.md">License</a>
+    <a href="#cite">Cite</a>
+  </div>
+  <div class="crosslink">
+    <a href="https://adabase-dataset.github.io">&larr; ADABase</a>
+    <span class="on">REVELIO</span>
+  </div>
+</nav>
+
+<header class="hero" id="overview">
+  <div class="hero-tag">
+    <span class="eyebrow">Cross-domain task-load dataset</span>
+    <span class="badge">Accepted &middot; IJHCI 2026, in press</span>
+  </div>
+  <h1>REVELIO</h1>
+  <p class="lede">REVELIO extends ADABase with two commercial video games, <strong>Hogwarts Legacy</strong> broom flight and <strong>Overcooked! 2</strong>, alongside the n-back protocol, recorded with the same sensors and annotation scheme.</p>
+  <p class="hero-meta">Together with ADABase: 96 sessions from 83 unique participants across four applications &middot; n-back, driving simulator and two games.</p>
+  <div class="btns" style="margin-bottom:36px">
+    <a class="btn btn-primary" href="#access">Request access</a>
+    <a class="btn" href="https://doi.org/10.48550/arXiv.2509.01642">Read paper (preprint)</a>
+    <a class="btn" href="#docs">Documentation notebook</a>
+    <a class="btn" href="#cite">BibTeX</a>
+  </div>
+  <div class="app-tiles" id="applications">
+    <div class="app-tile">
+      <div class="app-fig"><img src="static/images/001.jpg" alt="Face landmarks and AU extraction synced with physiological signals"></div>
+      <div class="app-body"><div class="t">Multimodal extraction</div><div class="d">Facial action units aligned with ECG &middot; EDA &middot; PPG &middot; respiration</div></div>
+    </div>
+    <div class="app-tile">
+      <div class="app-fig"><img src="static/images/002.jpg" alt="Participant in the instrumented cabin during a game session"></div>
+      <div class="app-body"><div class="t">In-cabin game experiment</div><div class="d">Xbox controller &middot; eye-tracker &middot; RGB camera on the shared rig</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="section-head"><div class="section-label">Dataset at a glance</div></div>
+<section class="spec">
+  <div class="spec-cell"><div class="k">Participants</div><div class="v">37</div></div>
+  <div class="spec-cell"><div class="k">Sessions</div><div class="v">45 <small>(30 public)</small></div></div>
+  <div class="spec-cell"><div class="k">Tasks</div><div class="v">3 <small>n-back + 2 games</small></div></div>
+  <div class="spec-cell"><div class="k">Format</div><div class="v">HDF5</div></div>
+  <div class="spec-cell"><div class="k">Biosignals</div><div class="v sm">ECG, PPG, EDA, EMG, RSP, SKT &middot; stored at 1&nbsp;kHz</div></div>
+  <div class="spec-cell"><div class="k">Eye / Video</div><div class="v sm">Gaze &amp; pupil (250&nbsp;Hz), facial AUs &amp; body landmarks (no raw video)</div></div>
+  <div class="spec-cell"><div class="k">Labels</div><div class="v sm">NASA-TLX, performance, meta-information &middot; fully ADABase compatible</div></div>
+  <div class="spec-cell"><div class="k">License</div><div class="v sm"><a href="https://raw.githubusercontent.com/revelio-dataset/revelio-dataset.github.io/main/LICENSE.md">Academic-only EULA</a></div></div>
+</section>
+
+<section class="access" id="access">
+  <div class="section-label">Access &middot; academic use only</div>
+  <h2>Request the dataset</h2>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><div class="t">Check eligibility</div><div class="d">Permanent position at an academic institution, institutional email address, non-commercial academic research only.</div></div>
+    <div class="step"><div class="n">02</div><div class="t">Request on Zenodo</div><div class="d">Use <strong>Request access</strong> on the Zenodo record. State name, position, affiliation, postal address, institutional email, up to five co-researchers and the intended research use.</div></div>
+    <div class="step"><div class="n">03</div><div class="t">Accept the EULA</div><div class="d">Submitting the request accepts the <a href="https://raw.githubusercontent.com/revelio-dataset/revelio-dataset.github.io/main/LICENSE.md">End User License Agreement</a>. Access is granted once the request has been reviewed.</div></div>
+  </div>
+  <div class="access-actions">
+    <a class="contact" href="https://doi.org/10.5281/zenodo.24060698">REVELIO Public Set on Zenodo</a>
+    <a class="btn" href="https://doi.org/10.5281/zenodo.24051552">ADABase Public Set on Zenodo</a>
+    <a class="btn" href="https://raw.githubusercontent.com/revelio-dataset/revelio-dataset.github.io/main/LICENSE.md">Read the EULA</a>
+  </div>
+  <p class="access-note">The <strong>Private Set</strong> (15 sessions) is retained as a hidden test set for benchmarking. Access is free of charge. Questions and commercial inquiries: <a href="mailto:adabase@iis.fraunhofer.de">adabase@iis.fraunhofer.de</a></p>
+</section>
+
+<section class="docs" id="docs">
+  <div>
+    <div class="section-label">Documentation</div>
+    <h2>Loading the public sets</h2>
+    <p>A Jupyter notebook walks through the ADABase and REVELIO public sets end to end, from the HDF5 layout to model-ready windows with a subject-wise split. Driving and gaming files share one layout, so the same code reads both.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="docs/cognitive-load-dataset-documentation.html">View in browser</a>
+      <a class="btn" href="https://github.com/revelio-dataset/revelio-dataset.github.io/blob/main/docs/cognitive-load-dataset-documentation.ipynb">Notebook (.ipynb) on GitHub</a>
+    </div>
+  </div>
+  <ol class="doc-topics">
+    <li><span class="n">01</span><span>Files, tables and channels: <code>SIGNALS</code>, <code>SUBJECTIVE</code>, <code>PERFORMANCE</code>, <code>META</code></span></li>
+    <li><span class="n">02</span><span>Participants and protocol, annotation by <code>STUDY</code>, <code>PHASE</code>, <code>LEVEL</code></span></li>
+    <li><span class="n">03</span><span>NASA-TLX ratings and task performance per level</span></li>
+    <li><span class="n">04</span><span>Biosignals, downsampling to 100&nbsp;Hz and normalization</span></li>
+    <li><span class="n">05</span><span>Window selection and building the dataset</span></li>
+    <li><span class="n">06</span><span>Suggested subject-wise split of the public sets</span></li>
+  </ol>
+</section>
+
+<section class="cite" id="cite" style="padding-top:40px">
+  <div class="section-label">Cite</div><br>
+  <h2>Cite this dataset</h2>
+  <p>Please cite the Zenodo records you use <strong>and both papers</strong>: ADABase introduced the acquisition setup, and REVELIO extends it with the gaming cohort.</p>
+  <p class="ref">Oppelt, M.P.; Foltyn, A.; Lang-Richter, N.R.; Eskofier, B.M. REVELIO: Multimodal Task Load Estimation for Cross-Domain Generalization. <em>International Journal of Human&ndash;Computer Interaction</em> <strong>2026</strong>, in press. Preprint: <a class="doi" href="https://doi.org/10.48550/arXiv.2509.01642">doi:10.48550/arXiv.2509.01642</a></p>
+  <p class="ref">Oppelt, M.P.; Foltyn, A.; Deuschel, J.; Lang, N.R.; Holzer, N.; Eskofier, B.M.; Yang, S.H. ADABase: A Multimodal Dataset for Cognitive Load Estimation. <em>Sensors</em> <strong>2023</strong>, <em>23</em>(1), 340. <a class="doi" href="https://doi.org/10.3390/s23010340">doi:10.3390/s23010340</a></p>
+  <div class="bibtex">
+    <div class="bibtex-head"><span class="lbl">BIBTEX</span><button class="copy-btn" type="button">Copy</button></div>
+    <pre>@article{oppelt2026revelio,
+  author    = {Oppelt, Maximilian P. and Foltyn, Andreas
+               and Lang-Richter, Nadine R. and Eskofier, Bjoern M.},
+  title     = {{REVELIO}: Multimodal Task Load Estimation
+               for Cross-Domain Generalization},
+  journal   = {International Journal of Human--Computer Interaction},
+  publisher = {Taylor \&amp; Francis},
+  year      = {2026},
+  doi       = {10.48550/arXiv.2509.01642},
+  note      = {In press. DOI refers to the arXiv preprint arXiv:2509.01642}
+}
+
+@article{oppelt2023adabase,
+  author  = {Oppelt, Maximilian P. and Foltyn, Andreas and Deuschel, Jessica
+             and Lang, Nadine R. and Holzer, Nina and Eskofier, Bjoern M.
+             and Yang, Seung Hee},
+  title   = {{ADABase}: A Multimodal Dataset for Cognitive Load Estimation},
+  journal = {Sensors},
+  year    = {2023},
+  volume  = {23},
+  number  = {1},
+  pages   = {340},
+  doi     = {10.3390/s23010340}
+}</pre>
+  </div>
+</section>
+
+<section class="versions" id="records">
+  <div class="section-label" style="margin-bottom:18px">Zenodo records &amp; identifiers</div>
+  <div class="records-wrap">
+    <table class="records">
+      <thead><tr><th>Record</th><th style="text-align:right">Sessions</th><th>DOI</th></tr></thead>
+      <tbody>
+        <tr><td>ADABase: Cognitive Driving Public Set</td><td class="num">30</td><td><a href="https://doi.org/10.5281/zenodo.24051552">10.5281/zenodo.24051552</a></td></tr>
+        <tr><td>REVELIO: Cognitive Gaming Public Set<span class="tag">this dataset</span></td><td class="num">30</td><td><a href="https://doi.org/10.5281/zenodo.24060698">10.5281/zenodo.24060698</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="chips">
+    <span class="chip">Paper: IJHCI 2026 &middot; in press</span>
+    <a class="chip" href="https://doi.org/10.48550/arXiv.2509.01642">Preprint: arXiv:2509.01642</a>
+    <a class="chip" href="https://doi.org/10.3390/s23010340">ADABase paper: 10.3390/s23010340</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <img src="static/images/tef-logo-horizontal.png" alt="TEF-Health" style="height:34px;opacity:.9">
+  <img src="static/images/iis.svg" alt="Fraunhofer IIS">
+  <img src="static/images/mad.svg" alt="MaD Lab FAU">
+  <img src="static/images/fau.svg" alt="Friedrich-Alexander-Universität Erlangen-Nürnberg">
+  <a class="legal-link" href="https://raw.githubusercontent.com/revelio-dataset/revelio-dataset.github.io/main/LICENSE.md">License (EULA)</a>
+  <a class="legal-link" href="impressum.html">Legal Notice / Impressum</a>
+  <span class="copy">&copy; REVELIO 2026</span>
+</footer>
+
+</div>
+<script src="static/js/main.js"></script>
+</body>
+</html>
